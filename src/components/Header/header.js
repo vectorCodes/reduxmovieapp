@@ -25,7 +25,6 @@ const Header = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log(user.photoURL);
       setLogInImage(user);
     });
   }, []);
