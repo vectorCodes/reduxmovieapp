@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Box } from "@chakra-ui/react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./components/Header/header";
+import Home from "./components/Home/home";
+import MovieDetail from "./components/MovieDetail/movieDetail";
+import PageNotFound from "./components/PageNotFound/pageNotFound";
+import Footer from "./components/Footer/footer";
+import Login from "./components/Auth/login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box>
+      <Router>
+        <Header></Header>
+        <Switch>
+          <Route exact path={"/"} component={Home} />
+          <Route path="/movie/:imdbID" component={MovieDetail} />
+          <Route exact path={"/login"} component={Login} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </Router>
+      <Footer></Footer>
+    </Box>
   );
 }
 
